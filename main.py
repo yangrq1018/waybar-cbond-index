@@ -7,7 +7,7 @@ import requests
 
 JSL_URL = "	https://www.jisilu.cn/webapi/cb/index_quote/"
 
-def main():
+def get_cbond_index():
     data = requests.get(JSL_URL).json()
     cur_index = data["data"]["cur_index"]
     cur_increase_rt = data["data"]["cur_increase_rt"]
@@ -18,6 +18,10 @@ def main():
         # "class": "",
     }
 
+    return output_obj
+
+def main():
+    output_obj = get_cbond_index()
     sys.stdout.write(json.dumps(output_obj))
 
 if __name__ == "__main__":
