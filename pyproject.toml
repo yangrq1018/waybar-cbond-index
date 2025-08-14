@@ -1,12 +1,17 @@
-[tool.poetry]
+[project]
 name = "waybar-cbond-index"
 version = "0.1.0"
 description = ""
-authors = ["martin <yang.ruoqi@outlook.com>"]
+authors = [
+    {name = "martin",email = "yang.ruoqi@outlook.com"}
+]
 readme = "README.md"
+requires-python = ">=3.10"
+
+[project.scripts]
+wci = "waybar_cbond_index:main"
 
 [tool.poetry.dependencies]
-python = "^3.12"
 requests = "^2.32.3"
 
 

@@ -1,5 +1,3 @@
-#!/usr/bin/env /home/martin/.cache/pypoetry/virtualenvs/waybar-cbond-index--xhz-acO-py3.13/bin/python
-
 import sys
 import json
 
@@ -7,8 +5,13 @@ import requests
 
 JSL_URL = "	https://www.jisilu.cn/webapi/cb/index_quote/"
 
+
+def get_jisilu_data():
+    return requests.get(JSL_URL, timeout=10).json()
+
+
 def main():
-    data = requests.get(JSL_URL).json()
+    data = get_jisilu_data()
     cur_index = data["data"]["cur_index"]
     cur_increase_rt = data["data"]["cur_increase_rt"]
 
@@ -19,6 +22,3 @@ def main():
     }
 
     sys.stdout.write(json.dumps(output_obj))
-
-if __name__ == "__main__":
-    main()
